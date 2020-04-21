@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/account")
@@ -26,16 +23,21 @@ public class AccountController {
 		Page<Account> accountList = accountService.list(page, pageSize);
 		return new ResponseEntity<>(accountList, HttpStatus.OK);
 	}
-    
-    @PostMapping("/add")
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Account> findById(@PathVariable String id){
+    	Account account= accountService.findById(id);
+		return new ResponseEntity<>(account,HttpStatus.OK);
+	}
+    @PostMapping("/{id}")
 	public ResponseEntity<Account> addAccount(@RequestBody Account account) {
 		Account acc = accountService.save(account);
 		return new ResponseEntity<>(acc, HttpStatus.OK);
 	}
     
-    @PostMapping("/update")
-	public ResponseEntity<Account> updateAccount(@RequestBody Account account) {
-		Account acc = accountService.Update(account);
+    @PutMapping("/{id}")
+	public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") String id, @RequestBody Account account) {
+		Account acc = accountService.update(id,account);
 		return new ResponseEntity<>(acc, HttpStatus.OK);
 	}
 
