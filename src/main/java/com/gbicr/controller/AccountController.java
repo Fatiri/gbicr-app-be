@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,13 +30,13 @@ public class AccountController {
     	Account account= accountService.findById(id);
 		return new ResponseEntity<>(account,HttpStatus.OK);
 	}
-    @PostMapping("/{id}")
-	public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+    @PostMapping("/")
+	public ResponseEntity<Account> addAccount(@Valid @RequestBody Account account) {
 		Account acc = accountService.save(account);
 		return new ResponseEntity<>(acc, HttpStatus.OK);
 	}
     @PutMapping("/{id}")
-	public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") String id, @RequestBody Account account) {
+	public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") String id, @Valid @RequestBody Account account) {
 		Account acc = accountService.update(id,account);
 		return new ResponseEntity<>(acc, HttpStatus.OK);
 	}

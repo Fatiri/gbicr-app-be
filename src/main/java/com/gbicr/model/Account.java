@@ -3,6 +3,7 @@ package com.gbicr.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "account")
@@ -28,23 +29,38 @@ public class Account {
     private String id;
 
     @Column
+    @NotEmpty(message = "Please provide a name")
+    @Size(min = 2, message = "Name should have at least 2 characters")
     private String full_name;
+
     @Column
+    @NotEmpty
+    @Email(message = "Please provide a valid email address")
+    @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
+    @NotNull
     private String email;
 
     @Column
+    @NotEmpty(message = "Please provide a username")
+    @Size(min = 5, message = "Please provide a username at least 5 characters")
     private String username;
 
     @Column
+    @NotEmpty(message = "Please provide a password")
+    @Size(min = 8, message = "Please provide a password at least 8 characters")
     private String password;
 
     @Column
+    @NotEmpty(message = "Please provide a phone number")
+    @Size(min = 10, message = "Please provide a phone number at least 10 characters")
     private String phone_number;
 
     @Column
+    @NotEmpty(message = "Please provide a birthdate")
     private String birthdate;
 
     @Column
+    @NotEmpty(message = "Please provide a birthplace")
     private String birthplace;
 
     public String getId() {
