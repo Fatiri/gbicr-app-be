@@ -53,7 +53,6 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public Account update(String id, Account account) {
 		Account someAccount = accountRepo.findById(id).orElseThrow(() -> new NotFoundException("id " + id + " is not found" ));
-		someAccount.setId(account.getId());
 		someAccount.setBirthdate(account.getBirthdate());
 		someAccount.setBirthplace(account.getBirthplace());
 		someAccount.setEmail(account.getEmail());
@@ -61,6 +60,6 @@ public class AccountServiceImpl implements AccountService{
 		someAccount.setPassword(account.getPassword());
 		someAccount.setPhone_number(account.getPhone_number());
 		someAccount.setUsername(account.getUsername());
-		return accountRepo.save(account);
+		return accountRepo.save(someAccount);
 	}
 }
