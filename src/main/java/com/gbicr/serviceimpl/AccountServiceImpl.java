@@ -48,6 +48,16 @@ public class AccountServiceImpl implements AccountService{
 		}
 		throw new NotFoundException("id " + id + " in account is not found");
 	}
+	
+	@Override
+	public List<Account> findByName(String name) {
+			List<Account> accounts = accountRepo.searchUserByName(name);
+			if(accounts.size() == 0) {
+				throw new NotFoundException("name " + name + " in account is not found");
+			} else {
+				return accounts;	
+			}
+	}
 
 
 	@Override
