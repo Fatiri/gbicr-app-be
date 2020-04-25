@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 @RestController
@@ -29,6 +31,13 @@ public class AccountController {
     	Account account= accountService.findById(id);
 		return new ResponseEntity<>(account,HttpStatus.OK);
 	}
+	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<Account>> findUserByName(@PathVariable String name){
+    	List<Account> account= accountService.findByName(name);
+		return new ResponseEntity<>(account,HttpStatus.OK);
+	}
+	
     @PostMapping("/")
 	public ResponseEntity<Account> addAccount(@Valid @RequestBody Account account) {
 		Account acc = accountService.save(account);
