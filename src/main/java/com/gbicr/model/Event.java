@@ -9,9 +9,9 @@ import javax.validation.constraints.*;
 @Table(name = "event")
 public class Event {
 
-    public Event(String id, String tittle, String date, String detail, String link_photo) {
+    public Event(String id, String title, String date, String detail, String link_photo) {
         this.id = id;
-        this.tittle = tittle;
+        this.title = title;
         this.date = date;
         this.detail = detail;
         this.link_photo = link_photo;
@@ -26,9 +26,9 @@ public class Event {
     private String id;
 
     @Column
-    @NotEmpty(message = "Please provide a tittle")
-    @Size(min = 2, message = "Tittle should have at least 2 characters")
-    private String tittle;
+    @NotEmpty(message = "Please provide a title")
+    @Size(min = 2, message = "title should have at least 2 characters")
+    private String title;
 
     @Column
     @NotEmpty
@@ -52,12 +52,12 @@ public class Event {
 		this.id = id;
 	}
 
-	public String getTittle() {
-		return tittle;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
 	public String getDate() {

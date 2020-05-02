@@ -33,10 +33,10 @@ public class EventController {
 		return new ResponseEntity<>(eventFindId,HttpStatus.OK);
 	}
 	
-	@GetMapping("/tittle/{tittle}")
-	public ResponseEntity<List<Event>> findEventByTittle(@PathVariable String tittle){
-    	List<Event> eventFindTittle = eventService.findByTittle(tittle);
-		return new ResponseEntity<>(eventFindTittle,HttpStatus.OK);
+	@GetMapping("/title/{title}")
+	public ResponseEntity<List<Event>> findEventBytitle(@PathVariable String title){
+    	List<Event> eventFindTitle = eventService.findByTitle(title);
+		return new ResponseEntity<>(eventFindTitle,HttpStatus.OK);
 	}
 	
     @PostMapping("/")

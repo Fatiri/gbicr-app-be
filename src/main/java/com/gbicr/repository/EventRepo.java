@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface EventRepo extends JpaRepository<Event, String> {
 	
-	@Query("Select c from Event c where c.tittle LIKE  %?1%")
-	List<Event> searchEventByTittle(String tittle);
+	@Query("Select c from Event c where c.title LIKE  %?1%")
+	List<Event> searchEventByTitle(String title);
 	
 }

@@ -50,10 +50,10 @@ public class EventServiceImpl implements EventService{
 	}
 	
 	@Override
-	public List<Event> findByTittle(String event) {
-			List<Event> events = eventRepo.searchEventByTittle(event);
+	public List<Event> findByTitle(String event) {
+			List<Event> events = eventRepo.searchEventByTitle(event);
 			if(events.size() == 0) {
-				throw new NotFoundException("tittle " + event + " in event is not found");
+				throw new NotFoundException("title " + event + " in event is not found");
 			} else {
 				return events;	
 			}
@@ -63,7 +63,7 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public Event update(String id, Event event) {
 		Event someEvent = eventRepo.findById(id).orElseThrow(() -> new NotFoundException("id " + id + " is not found" ));
-		someEvent.setTittle(event.getTittle());
+		someEvent.settitle(event.gettitle());
 		someEvent.setDate(event.getDate());
 		someEvent.setDetail(event.getDetail());
 		someEvent.setLink_photo(event.getLink_photo());

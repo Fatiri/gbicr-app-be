@@ -12,7 +12,7 @@ public interface EventService {
     Event save (Event event);
     Page<Event> list (int page, int pageSize);
     Event findById(String id);
-    List<Event> findByTittle(String tittle);
+    List<Event> findByTitle(String title);
     Event update (String id, Event event);
 
 }
