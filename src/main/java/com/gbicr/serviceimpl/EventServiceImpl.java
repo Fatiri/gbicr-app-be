@@ -71,7 +71,7 @@ public class EventServiceImpl implements EventService{
 		someEvent.setLink_photo(event.getLink_photo());
 		return eventRepo.save(someEvent);
 	}
-
+  
 	@Override
 	public void deleteById(String id) {
 		Event event = findById(id);
