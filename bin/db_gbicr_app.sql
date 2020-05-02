@@ -28,8 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `account`
 --
 
-use db_gbicr_app;
-
 CREATE TABLE `account` (
   `id` varchar(90) NOT NULL,
   `full_name` varchar(90) NOT NULL,
@@ -40,18 +38,6 @@ CREATE TABLE `account` (
   `birthdate` varchar(45) NOT NULL,
   `birthplace` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- drop table event;
-
-CREATE TABLE `event` (
-  `id` varchar(100) NOT NULL,
-  `tittle` varchar(100) NOT NULL,
-  `date` date NOT NULL,
-  `detail` text NOT NULL,
-  `link_photo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-select * from event;
 
 --
 -- Indexes for dumped tables
