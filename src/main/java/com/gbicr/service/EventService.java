@@ -14,5 +14,5 @@ public interface EventService {
     Event findById(String id);
     List<Event> findByTitle(String title);
     Event update (String id, Event event);
-
+    void deleteById(String id);
 }

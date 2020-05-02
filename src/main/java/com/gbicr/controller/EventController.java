@@ -50,4 +50,8 @@ public class EventController {
 		return new ResponseEntity<>(eventUpdate, HttpStatus.OK);
 	}
 
+	@DeleteMapping("/{id}")
+	public void deleteEvent(@PathVariable String id) {
+		eventService.deleteById(id);
+	}
 }

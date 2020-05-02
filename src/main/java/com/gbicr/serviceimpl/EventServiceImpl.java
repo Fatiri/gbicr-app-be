@@ -1,6 +1,8 @@
 package com.gbicr.serviceimpl;
 
+import com.gbicr.exception.CustomGlobalExceptionHandler;
 import com.gbicr.exception.NotFoundException;
+import com.gbicr.exception.SuccessException;
 import com.gbicr.model.Event;
 import com.gbicr.repository.EventRepo;
 import com.gbicr.service.EventService;
@@ -68,5 +70,12 @@ public class EventServiceImpl implements EventService{
 		someEvent.setDetail(event.getDetail());
 		someEvent.setLink_photo(event.getLink_photo());
 		return eventRepo.save(someEvent);
+	}
+  
+	@Override
+	public void deleteById(String id) {
+		Event event = findById(id);
+		eventRepo.deleteById(event.getId());
+		throw new SuccessException("Success");
 	}
 }
